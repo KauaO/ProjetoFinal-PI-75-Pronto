@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container">
+    <form method="post">
+        <div class="row">
+            {% csrf_token %}
+            <div class="col-sm-12 col-md6">
+                <fieldset class="row">
+                    <legend class="mb-3" style="font-size: 30px; center;">Cadastro de novo cliente</legend>
+                    <div class="mb-3">
+                        <label for="txtnome" class="form-label">Nome</label>
+                        <input class="form-control" type="text" id="txtnome" {{ form_cliente.nome }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtCPF">CPF</label>
+                        <span class="text-muted">(somente numeros)</span>
+                        <input class="form-control" type="text" id="txtCPF" {{ form_cliente.CPF }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtTEL">Telefone</label>
+                        <span class="text-muted">(somente numeros)</span>
+                        <input class="form-control" type="text" id="txtTEL" {{ form_cliente.telefone }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtsaldo">Saldo</label>
+                        <input class="form-control" type="text" id="txtsaldo" {{ form_cliente.saldo }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtnome" class="form-label">Status</label>
+                        {{ form_cliente.status_pag }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtnome" class="form-label">Serviço</label>
+                        <br>
+                        {{ form_cliente.servico }}
+                    </div>
+                    
+                </fieldset>
+            </div>
+            <div class="col-sm-12 col-md6">
+            </div>
+        </div>
+        <div class="form-check mb-3">
+            <input class="btn btn-primary" type="submit" value="Cadastrar">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

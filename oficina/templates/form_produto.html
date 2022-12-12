@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            {% csrf_token %}
+            <div class="col-sm-12 col-md6">
+                <fieldset class="row">
+                    <legend class="mb-3" style="font-size: 30px; center;">Cadastro de nova peça</legend>
+                    <div class="mb-3">
+                        <label for="txtnome" class="form-label">Categoria</label> <br>
+                        {{ form_produto.categoria }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtnome" class="form-label">Marca</label> <br>
+                        {{ form_produto.marca }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtPerfil">Perfil</label>
+                        <input class="form-control" type="text" id="txtPerfil" {{ form_produto.perfil }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txttamanho">Tamanho</label>
+                        <input class="form-control" type="text" id="txttamanho" {{ form_produto.tamanho }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtTipo">Tipo</label>
+                        <input class="form-control" type="text" id="txtTipo" {{ form_produto.tipo }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtLargura">Largura</label>
+                        <input class="form-control" type="text" id="txtLargura" {{ form_produto.largura }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtMaterial">Material</label>
+                        <input class="form-control" type="text" id="txtMaterial" {{ form_produto.material }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtCor">Cor</label>
+                        <input class="form-control" type="text" id="txtCor" {{ form_produto.cor }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtValor">Valor</label>
+                        <input class="form-control" type="text" id="txtValor" {{ form_produto.valor_produto }}
+                    </div>
+                    <div class="col-md-6 col-xl-4 mb-3">
+                        <label class="form-label" for="txtQuantidade">Quantidade</label>
+                        <input class="form-control" type="text" id="txtQuantidade" {{ form_produto.quantidade }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtnome" class="">Adicionar imagem</label> <br>
+                        {{ form_produto.imagem }}
+                    </div>
+                    
+                </fieldset>
+            </div>
+        </div>
+        <div class="form-check mb-3">
+            <input class="btn btn-primary" type="submit" value="Cadastrar">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

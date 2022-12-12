@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container">
+    <h1 class="display6" style="font-size: 30px; center; color: silver"> Cadastro de novo serviço </h1>
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form_servico }} 
+                 
+        <input class="btn btn-primary" type="submit" value="Cadastrar">
+    </form>
+</div>
+
+{% endblock %}
