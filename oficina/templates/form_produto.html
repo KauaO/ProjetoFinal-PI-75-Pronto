@@ -1,66 +1,74 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block conteudo %}
 
 <div class="container">
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" id="form">
         <div class="row">
             {% csrf_token %}
             <div class="col-sm-12 col-md6">
                 <fieldset class="row">
-                    <legend class="mb-3" style="font-size: 30px; center;">Cadastro de nova peça</legend>
+                    <legend class="mb-3" style="font-size: 30px center">Cadastro de nova peça</legend>
                     <div class="mb-3">
-                        <label for="txtnome" class="form-label">Categoria</label> <br>
-                        {{ form_produto.categoria }}
+                        <label for="txtnome" class="form-label" id="categoria">Categoria</label> <br>
+                        <select name="categoria" id="select">
+                            <option id="val" value={{ form_produto.categoria }}</option>
+                            
+                        </select>
+                
                     </div>
-                    <div class="mb-3">
+
+
+
+                    <div class="mb-3" id="marca" >
                         <label for="txtnome" class="form-label">Marca</label> <br>
                         {{ form_produto.marca }}
                     </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
+                    <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="perfil">
                         <label class="form-label" for="txtPerfil">Perfil</label>
-                        <input class="form-control" type="text" id="txtPerfil" {{ form_produto.perfil }}
-                    </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
-                        <label class="form-label" for="txttamanho">Tamanho</label>
-                        <input class="form-control" type="text" id="txttamanho" {{ form_produto.tamanho }}
-                    </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
-                        <label class="form-label" for="txtTipo">Tipo</label>
-                        <input class="form-control" type="text" id="txtTipo" {{ form_produto.tipo }}
-                    </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
-                        <label class="form-label" for="txtLargura">Largura</label>
-                        <input class="form-control" type="text" id="txtLargura" {{ form_produto.largura }}
-                    </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
-                        <label class="form-label" for="txtMaterial">Material</label>
-                        <input class="form-control" type="text" id="txtMaterial" {{ form_produto.material }}
-                    </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
-                        <label class="form-label" for="txtCor">Cor</label>
-                        <input class="form-control" type="text" id="txtCor" {{ form_produto.cor }}
-                    </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
-                        <label class="form-label" for="txtValor">Valor</label>
-                        <input class="form-control" type="text" id="txtValor" {{ form_produto.valor_produto }}
-                    </div>
-                    <div class="col-md-6 col-xl-4 mb-3">
-                        <label class="form-label" for="txtQuantidade">Quantidade</label>
-                        <input class="form-control" type="text" id="txtQuantidade" {{ form_produto.quantidade }}
-                    </div>
-                    <div class="mb-3">
-                        <label for="txtnome" class="">Adicionar imagem</label> <br>
-                        {{ form_produto.imagem }}
-                    </div>
-                    
+                        <input class="form-control" type="text" id="txtPerfil" {{ form_produto.perfil }} </div>
+                        <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="tamanho">
+                            <label class="form-label" for="txttamanho">Tamanho</label>
+                            <input class="form-control" type="text" id="txttamanho" {{ form_produto.tamanho }} </div>
+                            <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="tipo">
+                                <label class="form-label" for="txtTipo">Tipo</label>
+                                <input class="form-control" type="text" id="txtTipo" {{ form_produto.tipo }} </div>
+                                <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="largura">
+                                    <label class="form-label" for="txtLargura">Largura</label>
+                                    <input class="form-control" type="text" id="txtLargura" {{ form_produto.largura }}
+                                        </div>
+                                    <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="material">
+                                        <label class="form-label" for="txtMaterial">Material</label>
+                                        <input class="form-control" type="text" id="txtMaterial" {{form_produto.material }} 
+                                    </div>
+                                        <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="cor">
+                                            <label class="form-label" for="txtCor">Cor</label>
+                                            <input class="form-control" type="text" id="txtCor" {{ form_produto.cor }}
+                                                </div>
+                                            <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="val">
+                                                <label class="form-label" for="txtValor">Valor</label>
+                                                <input class="form-control" type="text" id="txtValor" {{ form_produto.valor_produto }}
+                                            </div>
+                                                <div style="display: none;" class="col-md-6 col-xl-4 mb-3" id="quant">
+                                                    <label class="form-label" for="txtQuantidade">Quantidade</label>
+                                                    <input class="form-control" type="text" id="txtQuantidade" {{ form_produto.quantidade }}
+                                                </div>
+                                                    <div style="display: none;" class="mb-3" id="img">
+                                                        <label for="txtnome" class="">Adicionar imagem</label> <br>
+                                                        {{ form_produto.imagem }}
+                                                    </div>
+
+                            
+
                 </fieldset>
             </div>
         </div>
-        <div class="form-check mb-3">
+        <div style="display: none;" class="form-check mb-3" id="btn">
             <input class="btn btn-primary" type="submit" value="Cadastrar">
         </div>
     </form>
 </div>
+
+<script src="../static/ocultar.js"></script>
 
 {% endblock %}
