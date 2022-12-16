@@ -12,7 +12,20 @@ $("#select").change(function(){
     var valor = document.getElementById('val');
     var img = document.getElementById('img');
 
+    console.log(value);
+    $(largura).hide();
+    $(tipo).hide();
+    $(perfil).hide();
+    $(tamanho).hide();
+    $(material).hide();
+    $(cor).hide();
+    $(btn).hide();
+    $(quant).hide();
+    $(val).hide();
+    $(img).hide();
+
         if(value === 'pneu'){
+            console.log("Mizera dos inferno");
             $(largura).show();
             $(perfil).show();
             $(tamanho).show();
@@ -57,7 +70,6 @@ $("#select").change(function(){
             $(val).show();
             $(img).show();
         }
-
         if(value === 'retrovisor'){
             $(tamanho).show();
             $(tipo).show();
