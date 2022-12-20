@@ -61,3 +61,6 @@ def Farois(request):
 def Retrovisores(request):
     lista_retrovisores = Produto.objects.all()
     return render (request, "retrovisores.html", {'pneus' : lista_retrovisores})
+
+def Atendimento(request):
+    return render (request, "atendimento.html")

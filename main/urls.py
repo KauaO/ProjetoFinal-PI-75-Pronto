@@ -28,6 +28,7 @@ urlpatterns = [
     path("raios/", Raios, name="raios.html"),
     path("farois/", Farois, name="farois.html"),
     path("retrovisores/", Retrovisores, name="retrovisores.html"),
+    path("atendimento/", Atendimento, name="atendimento.html"),
     path("cadastro_servico/", cadastrar_servico, name="form_servico.html"),
     path('cadastro_cliente/', cadastrar_cliente, name="form_cliente.html"),
     path('cadastro_produto/', cadastrar_produto, name="form_produto.html") 

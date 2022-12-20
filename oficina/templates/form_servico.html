@@ -8,8 +8,10 @@
         {% csrf_token %}
 
         {{ form_servico }} 
-                 
-        <input class="btn btn-primary" type="submit" value="Cadastrar">
+          
+        <a href=" {% url 'atendimento.html' %} ">
+            <input class="btn btn-primary" type="submit"  value="Cadastrar">
+        </a>
     </form>
 </div>
 
