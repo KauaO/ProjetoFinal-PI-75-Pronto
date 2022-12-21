@@ -64,6 +64,11 @@
   text-align: center;
   line-height: 60px;
 }
+
+ul.nav-list{
+    padding-left: 0rem !important ;
+}
+
 .sidebar .nav-list{
   margin-top: 20px;
   height: 100%;
