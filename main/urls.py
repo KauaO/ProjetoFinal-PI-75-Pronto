@@ -31,6 +31,7 @@ urlpatterns = [
     path("atendimento/", Atendimento, name="atendimento.html"),
     path("cadastro_servico/", cadastrar_servico, name="form_servico.html"),
     path('cadastro_cliente/', cadastrar_cliente, name="form_cliente.html"),
-    path('cadastro_produto/', cadastrar_produto, name="form_produto.html") 
+    path('cadastro_produto/', cadastrar_produto, name="form_produto.html"),
+    path('teste/', teste, name="teste.html") 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

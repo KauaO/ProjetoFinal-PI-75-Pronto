@@ -64,3 +64,6 @@ def Retrovisores(request):
 
 def Atendimento(request):
     return render (request, "atendimento.html")
+
+def teste(request):
+    return render (request, "teste.html")

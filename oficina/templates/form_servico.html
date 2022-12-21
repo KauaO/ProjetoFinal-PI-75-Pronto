@@ -1,18 +1,14 @@
-{% extends 'base.html' %}
-
-{% block conteudo %}
+{% extends 'base.html' %} {% block conteudo %}
 
 <div class="container">
-    <h1 class="display6" style="font-size: 30px; center; color: silver"> Cadastro de novo serviço </h1>
-    <form method="post">
-        {% csrf_token %}
+  <h1 class="display6" style="font-size: 30px; color: silver">
+    Cadastro de novo serviço
+  </h1>
+  <form method="post">
+    {% csrf_token %} {{ form_servico }}
 
-        {{ form_servico }} 
-          
-        <a href=" {% url 'atendimento.html' %} ">
-            <input class="btn btn-primary" type="submit"  value="Cadastrar">
-        </a>
-    </form>
+    <input class="btn btn-primary" type="submit" value="Cadastrar" />
+  </form>
 </div>
 
 {% endblock %}

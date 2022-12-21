@@ -3,13 +3,25 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Link BoxIcons  -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="..\static\css\style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+
     <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    
+<!-- Esse Link aqui -->
+    <!-- <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
       integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
       crossorigin="anonymous"
-    />
+    /> -->
+<!-- Esse Link aqui -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -17,13 +29,8 @@
       crossorigin="anonymous"
     />
     <script src="..\static\js\jquery-3.6.2.js"></script>
-    <script src="..\static\js\sidebar.js"></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="..\static\css\sidebar.css"
-      media="screen"
-    />
+
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -52,35 +59,83 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        
       </div>
     </nav>
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href=" {% url 'form_cliente.html' %} ">Cadastrar cliente</a>
-      <a href=" {% url 'form_produto.html' %} ">Cadastrar Produto</a>
-      <a href=" {% url 'form_servico.html' %} ">Cadastrar Serviço</a>
-      <a href="#">Estoque</a>
-    </div>
-    
-    <div id="main">
-      <button class="openbtn" onclick="openNav()">&#9776;</button>
-    </div>  
-    
-    <header></header>
-
-    <main class="mb-5 pb-5 mb-md-0">{% block conteudo %} 
-      <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href=" {% url 'form_cliente.html' %} ">Cadastrar cliente</a>
-        <a href=" {% url 'form_produto.html' %} ">Cadastrar Produto</a>
-        <a href=" {% url 'form_servico.html' %} ">Cadastrar Serviço</a>
-        <a href="#">Estoque</a>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class='bx bx-wrench icon' ></i>
+          <div class="logo_name">JC MotoPeças</div>
+          <i class='bx bx-menu' id="buttom" ></i>
       </div>
-      
-      <div id="main">
-        <button class="openbtn" onclick="openNav()">&#9776;</button>
-      </div>  
+      <ul class="nav-list">
+        <li>
+          <a href=" {% url 'form_produto.html' %} ">
+            <i class='bx bx-list-plus'></i>
+            <span class="links_name">Cadastrar Produto</span>
+          </a>
+           <span class="tooltip">Cadastrar Produto</span>
+        </li>
+        <li>
+         <a href=" {% url 'form_cliente.html' %} ">
+           <i class='bx bx-user' ></i>
+           <span class="links_name">Cadastrar Cliente</span>
+         </a>
+         <span class="tooltip">Cadastrar Cliente</span>
+       </li>
+       <li>
+         <a href=" {% url 'form_servico.html' %} ">
+          <i class='bx bx-cog'></i>
+           <span class="links_name">Cadastrar Serviço</span>
+         </a>
+         <span class="tooltip">Cadastrar Serviço</span>
+       </li>
+       <li>
+         <a href="#">
+           <i class='bx bx-folder' ></i>
+           <span class="links_name">File Manager</span>
+         </a>
+         <span class="tooltip">Files</span>
+       </li>
+
+       <li class="profile">
+           <div class="profile-details">
+             <!--<img src="profile.jpg" alt="profileImg">-->
+             <div class="name_job">
+               <div class="name">Prem Shahi</div>
+               <div class="job">Web designer</div>
+             </div>
+           </div>
+           <i class='bx bx-log-out' id="log_out" ></i>
+       </li>
+      </ul>
+    </div>
+    <script>
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#buttom");
+    let searchBtn = document.querySelector(".bx-search");
+  
+    closeBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("open");
+      menuBtnChange();//calling the function(optional)
+    });
+  
+    searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+      sidebar.classList.toggle("open");
+      menuBtnChange(); //calling the function(optional)
+    });
+  
+    // following are the code to change sidebar button(optional)
+    function menuBtnChange() {
+     if(sidebar.classList.contains("open")){
+       closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+     }else {
+       closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+     }
+    }
+    </script>
+
+    <main class="mb-5 pb-5 mb-md-0">{% block conteudo %}
+    
       {% endblock %}</main>
 
     <div style="height: 273px" class="d-block d-md-none"></div>
