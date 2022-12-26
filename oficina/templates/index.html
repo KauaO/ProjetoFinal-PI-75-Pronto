@@ -7,10 +7,12 @@
             <div class="col-12 col-md-7">
                 <div class="justify-content-center justify-content-md-start mb-3 mb-md-0">
                     <form class="ml-3 d-inline-block" action="">
-                        <select class="form-select form-select-sm">
-                            <option>Ordenar pelo nome</option>
-                            <option>Ordenar pelo maior preço</option>
-                            <option>Ordenar pelo menor preço</option>
+                        <select class="form-select form-select-sm" name="categoria" id="id_categoria" onchange="this.form.submit();" >
+                            <option value="" disabled selected>Filtrar por categoria</option>
+                            <option value="">Todos</option>
+                            {% for Categoria in categorias %}
+                                <option value="{{ Categoria.id }}">{{ Categoria.nome }}</option>
+                            {% endfor %}
                         </select>
                     </form>
                 </div>
@@ -19,7 +21,7 @@
             <div class="col-12 col-md-5">
                 <form class="d-flex flex-row-reverse justify-content-center justify-content-md-start" action="">
                     <div class="input-group input-group-sm">
-                        <input class="form-control" placeholder="Digite aqui o que procura" type="text">
+                        <input class="form-control" placeholder="Digite aqui o que procura" type="number" name="valor_produto__icontains" id="id_valor_produto__icontains">
                         <button class="btn btn-danger">
                             Buscar
                         </button>
@@ -35,23 +37,24 @@
         </div>
         <hr class="mt-3">
         <div class="row">
-            {% for Produto in produtos %}
+            {% for produtos in filter.qs %}
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch mb-3">
                 <div class="card text-center bg-light-">
-                    <img src="media/{{ Produto.imagem }}" alt="Imagem do produto">
+                    <img src="media/{{ produtos.imagem }}" alt="Imagem do produto">
                     <div class="card-header">
-                        R$ {{ Produto.valor_produto }}
+                        R$ {{ produtos.valor_produto }}
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"> {{ Produto.categoria }}</h5>
-                        <p class="card-text">Marca: {{ Produto.marca.nome }}  perfil: {{ Produto.perfil }}, largura: {{ Produto.largura }}, tamanho do aro: {{ Produto.tamanho }}</p>
+                        <h5 class="card-title"> {{ produtos.categoria }}</h5>
+                        <p class="card-text">Marca: {{ produtos.marca.nome }}  perfil: {{ produtos.perfil }}, largura: {{ produtos.largura }}, tamanho do aro: {{ produtos.tamanho }}</p>
+                        
                     </div> 
-                    <div class="card-footer">
+                    <div class="card-footer align-items-md-center">
                         <form class="d-block" action="">
                             <button class="btn btn-info">
-                                Add ao serviço
+                                Adicionar 
                             </button>
-                            <small class="text-success"><br> {{ Produto.quantidade }} peças em estoque <br></small>
+                            <small class="text-success"><br> {{ produtos.quantidade }} peças em estoque <br></small>
                         </form>
                     </div>
                 </div>

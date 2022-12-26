@@ -1,13 +1,24 @@
 from django.shortcuts import render
 from main.forms import *
 from oficina.models import *
+from oficina.filters import *
 
 # Create your views here.
 
 def Index(request):
+    lista_categorias = Categoria.objects.all()
     lista_produtos = Produto.objects.all()
-    context = {'produtos' : lista_produtos}
-    return render (request, 'index.html', context)  
+    lista_marcas = Marca.objects.all()
+    produto_filter = ProdutoFilter(request.GET, queryset=lista_produtos)
+    marcas_filter = MarcaFilter(request.GET, queryset=lista_marcas)
+    
+    context = {
+        'marcas': marcas_filter,
+        'categorias': lista_categorias,
+        'produtos': lista_produtos,
+        'filter': produto_filter,
+        }
+    return render (request, 'index.html', context)   
 
 def cadastrar_cliente(request):
     if request.method == 'POST':
